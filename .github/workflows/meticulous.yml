@@ -51,9 +51,13 @@ jobs:
       - name: 运行 Meticulous 测试
         env:
           METICULOUS_API_TOKEN: ${{ secrets.METICULOUS_API_TOKEN }}
-          PUPPETEER_ARGS: "--no-sandbox --disable-setuid-sandbox"
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: false
+          CHROME_BIN: /usr/bin/google-chrome-stable
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
         run: |
+          export CHROME_DEVEL_SANDBOX=/dev/null
           npx @alwaysmeticulous/cli run-all-tests \
             --apiToken="${METICULOUS_API_TOKEN}" \
             --headless \
-            --appUrl="http://localhost:4173"
+            --appUrl="http://localhost:4173" \
+            --no-sandbox
