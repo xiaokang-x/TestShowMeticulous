@@ -55,9 +55,8 @@ jobs:
           CHROME_BIN: /usr/bin/google-chrome-stable
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
         run: |
-          export CHROME_DEVEL_SANDBOX=/dev/null
           npx @alwaysmeticulous/cli run-all-tests \
             --apiToken="${METICULOUS_API_TOKEN}" \
             --headless \
             --appUrl="http://localhost:4173" \
-            --no-sandbox
+            --noSandbox
