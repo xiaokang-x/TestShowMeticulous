@@ -14,6 +14,23 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
+      - name: 安装系统依赖
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3 \
+            libatk1.0-0 \
+            libatk-bridge2.0-0 \
+            libcups2 \
+            libdrm2 \
+            libxkbcommon0 \
+            libxcomposite1 \
+            libxdamage1 \
+            libxfixes3 \
+            libxrandr2 \
+            libgbm1 \
+            libasound2
+
       - name: 设置 Node.js
         uses: actions/setup-node@v4
         with:
@@ -34,6 +51,7 @@ jobs:
       - name: 运行 Meticulous 测试
         env:
           METICULOUS_API_TOKEN: ${{ secrets.METICULOUS_API_TOKEN }}
+          PUPPETEER_ARGS: "--no-sandbox --disable-setuid-sandbox"
         run: |
           npx @alwaysmeticulous/cli run-all-tests \
             --apiToken="${METICULOUS_API_TOKEN}" \
