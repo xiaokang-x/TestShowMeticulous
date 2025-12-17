@@ -62,5 +62,4 @@ jobs:
             --headless \
             --appUrl="http://localhost:4173" \
             --noSandbox \
-            --commit-sha="${{ github.sha }}" \
-            --github-repository="${{ github.repository }}"
+            --commitSha="${{ github.sha }}"
