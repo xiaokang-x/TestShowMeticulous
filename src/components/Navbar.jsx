@@ -39,15 +39,6 @@ function Navbar() {
               </li>
             </>
           )}
-          {!isAuth && (
-            <>
-              <li className="nav-item">
-                <NavLink activeClassName="active" className="nav-link" to="/register">
-                  Sign up
-                </NavLink>
-              </li>
-            </>
-          )}
         </ul>
       </div>
     </nav>
