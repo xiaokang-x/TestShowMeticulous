@@ -16,7 +16,7 @@ function FavoriteArticleButton({ slug, favorited, children, className = '' }) {
         },
         className
       )}
-      onClick={() => mutate({ favorited })}
+      onClick={(e) => e.preventDefault()}
       disabled={isLoading}
     >
       <i className="ion-heart" />
