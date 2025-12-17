@@ -1,3 +1,7 @@
 button:focus {
   outline: none;
 }
+
+.banner {
+  background-color: #dc3545 !important;
+}
