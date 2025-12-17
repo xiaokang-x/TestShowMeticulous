@@ -26,7 +26,7 @@ function PopularTags({ onTagClick }) {
 
   return (
     <div className="sidebar">
-      <p style={{ fontSize: '24px', fontWeight: 'bold', color: 'red' }}>Popular Tags 测试视觉回归</p>
+      <p style={{ fontSize: '24px', fontWeight: 'bold', color: 'green' }}>Popular Tags TTTTTTTEST</p>
       <div className="tag-list">{content()}</div>
     </div>
   )
