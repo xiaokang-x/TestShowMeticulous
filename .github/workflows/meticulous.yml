@@ -47,6 +47,8 @@ jobs:
         run: |
           npm run serve &
           npx wait-on http://localhost:4173 --timeout 60000
+          echo "服务器已启动，等待应用初始化..."
+          sleep 10
 
       - name: 运行 Meticulous 测试
         env:

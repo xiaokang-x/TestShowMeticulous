@@ -142,6 +142,11 @@ function makeServer({ environment = 'development' } = {}) {
     },
 
     routes() {
+      // 允许 Meticulous 的所有请求通过，不被 MirageJS 拦截
+      this.passthrough('https://snippet.meticulous.ai/**')
+      this.passthrough('https://collect.meticulous.ai/**')
+      this.passthrough('https://*.meticulous.ai/**')
+
       this.get('/articles/feed', (schema) => schema.articles.all().filter((article) => article.author.following))
 
       this.get('/articles', (schema, request) => {
@@ -276,6 +281,16 @@ function makeServer({ environment = 'development' } = {}) {
         favorite.destroy()
 
         return article
+      })
+
+      // 允许所有外部请求（非 API 路由）通过
+      // 这确保 Meticulous、CDN 资源等外部请求不被拦截
+      this.passthrough((request) => {
+        // 如果是完整的 URL（包含协议），允许通过
+        if (request.url.startsWith('http://') || request.url.startsWith('https://')) {
+          return true
+        }
+        return false
       })
     },
   })

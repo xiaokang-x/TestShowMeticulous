@@ -7,9 +7,10 @@ import axios from 'axios'
 import App from './App'
 import makeServer from './server'
 
-if (process.env.NODE_ENV === 'production') {
-  axios.defaults.baseURL = 'https://api.realworld.io/api'
-}
+// 注释掉真实 API，使用 mock 数据用于演示和测试
+// if (process.env.NODE_ENV === 'production') {
+//   axios.defaults.baseURL = 'https://api.realworld.io/api'
+// }
 
 const defaultQueryFn = async ({ queryKey }) => {
   const { data } = await axios.get(queryKey[0], { params: queryKey[1] })
@@ -34,7 +35,8 @@ if (window.Cypress && process.env.NODE_ENV === 'test') {
     },
   })
   cyServer.logging = false
-} else if(process.env.NODE_ENV === 'development') {
+} else {
+  // 在开发和生产模式下都使用 mock 数据（用于演示和测试）
   makeServer({ environment: 'development' })
 }
 
