@@ -103,7 +103,7 @@ function makeServer({ environment = 'development' } = {}) {
         token: () => faker.datatype.uuid(),
         username: () => faker.internet.userName(),
         bio: () => faker.lorem.sentence(),
-        image: () => faker.image.avatar(),
+        image: () => `https://i.pravatar.cc/150?img=${faker.datatype.number({ min: 1, max: 70 })}`,
         following: false,
         afterCreate(user, server) {
           server.createList('article', 5, { author: user })
