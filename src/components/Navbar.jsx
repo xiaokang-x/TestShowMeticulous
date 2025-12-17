@@ -46,11 +46,6 @@ function Navbar() {
                   Sign up
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink activeClassName="active" className="nav-link" to="/login">
-                  Sign in
-                </NavLink>
-              </li>
             </>
           )}
         </ul>
