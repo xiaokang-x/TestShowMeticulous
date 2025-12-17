@@ -61,4 +61,6 @@ jobs:
             --apiToken="${METICULOUS_API_TOKEN}" \
             --headless \
             --appUrl="http://localhost:4173" \
-            --noSandbox
+            --noSandbox \
+            --commitSha="${{ github.sha }}" \
+            --githubRepository="${{ github.repository }}"
